@@ -1,0 +1,15 @@
+{
+  "name": "meta-brainiverse",
+  "version": "1.0.0",
+  "description": "A Pen created on CodePen.io. Original URL: [https://codepen.io/Mamboleoo/pen/rNmRqeK](https://codepen.io/Mamboleoo/pen/rNmRqeK).",
+  "main": "tempPosition.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -d dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gh-pages": "^4.0.0"
+  }
+}

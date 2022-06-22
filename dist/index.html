@@ -1,0 +1,554 @@
+<html>
+<head>
+  <title>Brainiverse</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	
+	<meta charset="utf-8">
+
+  <meta property="og:title" content="Crafted with love and care from eureka">
+  <meta name="description" content="One dot equals $100M of exports">
+  <meta property="og:description" content="One dot equals $100M of exports">
+  <!-- <meta property="og:image" content="http://globe.cid.harvard.edu/images/preview.png"> -->
+  <!-- <meta property="og:url" content="http://globe.cid.harvard.edu"> -->
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <link href="style.css" rel="stylesheet" type="text/css">
+
+  <link href="/dist/select2.css" rel="stylesheet" type="text/css">
+
+
+
+
+  <link rel="icon" href="images/favicon.ico" />
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+ 
+
+  
+  <!-- <script  type="module"  src="https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js"></script> -->
+  <script  type="module"  src="https://www.gstatic.com/firebasejs/7.8.1/firebase-auth.js"></script>
+  <!-- <script  type="module"  src="https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js"></script> -->
+  <script  type="module"  src="https://www.gstatic.com/firebasejs/9.8.3/firebase-storage.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="/dist/UI.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.js'></script>
+  <script src='https://assets.codepen.io/127738/MeshSurfaceSampler_20210711.js'></script>
+  <script src='https://assets.codepen.io/127738/OBJLoader_20210711.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.2/js/select2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+
+  <script src="/dist/script.js"></script>
+  <script src="/dist/braincoor.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
+        integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
+        crossorigin="anonymous" defer>
+</script>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
+
+
+<link href='http://fonts.googleapis.com/css?family=Rajdhani:300|500' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/solid.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css">
+<link href="select2.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/solid.min.css">
+</head>
+
+<body >
+
+	<div id="storyPrompt">
+		
+
+		<div id="choice">
+			<div id='beginStory'>
+			<img src="images/icon/tour.png"/>
+			<div>Start the Intro</div>
+			<div id="loading">View an animated tour through the visualizations and concepts behind this project.</div>
+			</div>
+		
+			<br/>
+			<br/>
+
+			<!-- <div><div class="midSeparator">&nbsp;</div></div> -->
+			<div id='beginExplore'>
+			<img src="images/icon/explore.png"/>
+			<div>Visualize Data</div>
+			<div id="loading">Skip the tour and start exploring our syllabus</div>
+			</div>
+		</div>
+	
+	</div>
+	<!-- <div id="spinner"></div> -->
+
+	<!-- <div id="storybottom"> -->
+		<div id="annotation" style="display: none;"></div>
+		
+		<div id="nextlevel" style="display:none">
+			<div id="nextBox">
+
+					<div id="nextButton">
+						<img src="images/icon/next.png"/>
+						<div class="small">Next</div>
+					</div>
+
+
+					
+					<div id="skipStoryLine">
+						<img src="images/icon/stop.png"/>
+						<div class="small">Quit</div>
+					</div>
+
+
+		     </div>
+
+			
+
+		</div>
+	<!-- </div> -->
+
+
+
+	<div id="UI" style="display:none">
+		
+
+		<div id="wikipediaBox"  style="display:none"  >
+			<div id="wikiheader">
+				<a id='expandarticle' href="#">View fullscreen</a>
+			</div>
+			<div id="wikiInfo"></div>
+		</div>
+
+	<div id="sideBar">
+	
+		<!-- <div class="optionSeparator">&nbsp;</div> -->
+		<div id="storyline">► Play Intro</div>
+		<!-- <div id="display" onclick="quizBioDisplay()">► Start Quiz</div> -->
+		<div id="buttons">
+
+		<div id="countrySection">
+			<div class="optionSeparator">&nbsp;</div>
+			<div class="selectionBox">
+			<select class="countrySelection">
+			</select>
+			</div>
+		</div>
+
+
+		<div id="productSection" style="display:none">
+			<!-- <div class="optionSeparator">&nbsp;</div> -->
+			<div class="productBox">
+			<select class="productSelection">
+			</select>
+			</div>
+		</div>
+
+		<!-- <div class="optionSeparator">&nbsp;</div> -->
+		<div id="visualizations"></div>
+		<!-- <div class="optionSeparator">&nbsp;</div> -->
+		<div id="showAbout">
+			<h2>Profile Info</h2>
+			</div>
+		<div id="fullscreen">Fullscreen Mode</div>
+		<div id="showlabels">Hide Labels</div>
+		<div id="contrastbutton">High contrast</div>
+		<div id="enableZoom">Enable Zoom</div>
+		<div class='sectionTitle'>Powered by:</div>
+		<a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Flk.linkedin.com%2Fcompany%2Feureka-innovations&psig=AOvVaw2Ds9LABgY6Gzd255hbqWj_&ust=1653420512607000&source=images&cd=vfe&ved=2ahUKEwiYt-jDrfb3AhUk_DgGHR2RDyQQr4kDegUIARCnAQ" target="_blank"><img id="theatlas" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfXTlNt9zgv6q_0SeoGAc96wMDCdN3XFHaQ1DsOtWOvReHYVdvhL80_tfGd5JB5u9ZEKs&usqp=CAU" style="width: 50px; opacity: .3"/></a>
+		<!-- <div id="atlasBox"></div> -->
+		
+	</div>
+	</div>
+
+	<div id="watch">
+		<img id="watchsvg" src="images/bluewatch.png"/>
+	</div>
+
+
+
+
+
+	</div>
+	<!-- </div> -->
+	<div id="countries" ></div>
+	<div id="categories"></div>
+	<div id="pointer"></div>
+	<div id="modeDescription"></div>
+	<div id="productlabel"></div>
+	<div id="noWebGL" style="display:none">
+		<div id='description'>TThis project was built with WebGL and needs it to run properly, your current web browser is not compatible.<br/> See <a href='https://get.webgl.org/'>get.webgl.org</a> to fix this issue or enjoy the following teaser:
+		<iframe width="420" style="padding-top:30px" height="315" src="https://www.youtube.com/embed/Obuq_L2U4VU" frameborder="0" allowfullscreen></iframe>
+		</div>
+	</div>
+
+
+
+
+	<div id="aboutText" style="display:none">
+
+		<div class="aboutTitle" >
+
+			<div class="btncont">
+				
+					<button class="btn" id="LoggedOut"  style="float:left" ><a>hai</a></button>
+					<button class="btn" id="Loggedin"  style="float:left" onclick="gssoOut()"> <a> LogOut</a></button>
+					<button class="btn" id="googleSS"  style="float:left" onclick="sso()"><a>Google </a></button>
+					<button class="btn"  id="googleSS"  style="float:left"> <a> chat</a></button>	
+		
+			</div>		
+		    	
+		</div>
+			
+
+		<div class="optionSeparator">&nbsp;</div>
+		
+
+	<div class="cont">
+
+
+			<div>
+						<div id="firebaseProfileinfo">
+						</div>
+					<br>
+					<br>
+						<img id="image" src="https://th.bing.com/th/id/R.fa0ca630a6a3de8e33e03a009e406acd?rik=UOMXfynJ2FEiVw&riu=http%3a%2f%2fwww.clker.com%2fcliparts%2ff%2fa%2f0%2fc%2f1434020125875430376profile.png&ehk=73x7A%2fh2HgYZLT1q7b6vWMXl86IjYeDhub59EZ8hF14%3d&risl=&pid=ImgRaw&r=0" style="float: left;"> 
+			</div>
+
+
+
+			<div style=" float:left;" > 
+				<input type="checkbox" id="switch" />
+				<label for="switch">dark</label>
+			</div>	
+
+
+	</div>
+
+
+					<br>
+
+
+
+					<div class="calcont">
+							<div id="d">
+								<button class="left">
+									<svg height="100%" width="100%" viewbox="0 0 10 10">
+										<path d="m 7 1 L 1 5 L 7 9 Z" fill="rgba(255,255,255,0.8)" />
+									</svg></button>
+								<button class="right">
+									<svg height="100%" width="100%" viewbox="0 0 10 10">
+										<path d="m 3 1 L 9 5 L 3 9 Z" fill="rgba(255,255,255,0.8)" />
+									</svg>
+								</button>
+							</div>
+					</div>
+
+	</div>
+
+
+		
+	
+
+
+  <div id="controller"  style="display:none">
+    <div id="circularMenu" class="circular-menu" onclick="hidestuff()">
+
+      <a class="floating-btn">
+        <i class="fa-solid fa-circle"></i>
+      </a>
+      
+      <menu class="items-wrapper">
+        <a id="taggle" href="#" class="menu-item fa fa-moon"  ></a>
+        <!-- <div id="bio" onclick="quizBioDisplay()"> -->
+        <a id="fly" href="#" class="menu-item fa fa-rocket"></a>
+        <!-- </div> -->
+        <a id="galaxy" href="#" class="menu-item fa fa-map"></a>
+        <a id="showhistory" href="#" class="menu-item fa fa-history "></a>
+      </menu>
+      
+      </div>
+
+      <div id="circularMenu1" class="circular-menu circular-menu-left" onclick="display()" >
+            
+      <a class="floating-btn"  >
+        <i class="fa-solid fa-circle"></i>
+      </a>
+      
+      <menu class="items-wrapper">
+        
+        <a id="ans1" href="#" class="menu-item fa-solid fa-a" ></a>
+        <a id="ans2" href="#" class="menu-item fa-solid fa-b" ></a>
+        <a id="ans3" href="#" class="menu-item fa-solid fa-c" ></a>
+        <a id="ans4" href="#" class="menu-item fa solid fa-d" ></a>
+        <!-- hidesearch hidewiko -->
+      </menu>
+      
+      </div>
+
+
+      <div id="quizbox">
+        <div class="quizes">
+          <div id="quiz"></div>
+        </div>
+        <div class="score_name">
+          <div id="score_name">Score Card</div>
+
+          <div class="container">
+            <div id="progressBar">
+              <div id="progressBarFull">
+                <div id="points"> </div>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div>
+
+
+
+
+
+</div>
+
+
+
+
+	</div>
+
+	<script type="module">
+		// Import the functions you need from the SDKs you need
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
+		import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-analytics.js";
+		import { doc, getDoc } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js";
+		import {collection, getDocs , getFirestore} from "https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore.js";
+		import {getAuth ,GoogleAuthProvider,EmailAuthProvider, signInWithRedirect, getRedirectResult, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-auth.js";
+		// TODO: Add SDKs for Firebase products that you want to use
+		// https://firebase.google.com/docs/web/setup#available-libraries
+	  
+		// Your web app's Firebase configuration
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	
+		// window.onload = function() {
+window.app= firebase.initializeApp( {
+		  apiKey: "AIzaSyD6oedGtuauvBnBB3KRvBm33yko2-YMHdg",
+		  authDomain: "brainiverse-meta.firebaseapp.com",
+		  projectId: "brainiverse-meta",
+		  storageBucket: "brainiverse-meta.appspot.com",
+		  messagingSenderId: "374735695477",
+		  appId: "1:374735695477:web:23608a30011164d86ad23c",
+		  measurementId: "G-R25E7NTGYD"
+		  
+		});
+		// const provider = new GoogleAuthProvider();
+		//  const auth = firebase.default.auth();
+		window.db = firebase.firestore();
+		db.settings({ timestampsInSnapshots: true },{merge: true},{ ignoreUndefinedProperties: true });
+
+		var auth = getAuth(app);
+		var provider = new firebase.auth.GoogleAuthProvider();
+		// console.log(provider);
+		// console.log(provider.constructor.credential);
+
+
+
+	window.sso =	function googleSSO(){
+// Using a popup.
+var provider = new firebase.auth.GoogleAuthProvider();
+provider.addScope('profile');
+provider.addScope('email');
+firebase.auth().signInWithPopup(provider).then(function(result) {
+ // This gives you a Google Access Token.
+ var token = result.credential.accessToken;
+ // The signed-in user info.
+ var userName = result.user.displayName;
+ var photoUrl = result.user.photoURL;
+ var UID = result.user.uid;
+
+
+ var demo_1 = `<div id='child'>Welcome bacck ${userName}</div><br>`
+ var selector = document.querySelector("#firebaseProfileinfo")
+ document.getElementById('image').src = photoUrl
+ selector.innerHTML =  demo_1
+
+ db.collection("user").doc(firebase.auth().currentUser.uid).set(
+	{Username: result.user.displayName, 
+	photoURL: result.user.photoURL,
+	},{merge: true}
+	);
+});
+
+
+
+ }
+
+ 
+
+
+
+   //when ever state of auth(signin sign out ) has occured
+   firebase.auth().onAuthStateChanged(function(user){
+
+			var notLoggedIn = document.getElementById('notLoggedin')
+			var LoggedIn = document.getElementById('Loggedin')
+			var googleSS = document.getElementById('googleSS')
+			
+//get document data and uppdate it to firebase
+
+	var docRef = db.collection("user").doc();
+	
+		//for logged in user show logout button
+		if(user){
+			
+				console.log(user, "loggin user user");
+				LoggedIn.style.display = 'block'
+				// notLoggedIn.style.display = 'none'
+				googleSS.style.display = 'none'
+				db.collection("user").doc(firebase.auth().currentUser.uid).get().then((doc) => {
+			if (doc.exists) {
+				console.log("user/uid data:", doc.data());
+				let selector = document.querySelector("#firebaseProfileinfo");
+					var demo_1 = `<div id='child'>Welcome  ${doc.data().Username}</div><br>`
+					document.getElementById('image').src = doc.data().photoURL
+					selector.innerHTML =  demo_1
+			} else {
+				console.log("No such document!");
+			}
+		}).catch((error) => {
+			console.log("Error getting document:", error);
+		});
+			}else{
+		//for logged out user show login button
+
+				console.log("logged out user");
+				LoggedIn.style.display = 'none'
+				googleSS.style.display = 'block'
+				alert("kindly signup with google to get the best out of this platform")
+
+			}
+
+		});
+
+		window.gssoOut = function logoff(){signOut(auth).then(() => {
+
+				console.log("successfully singed off");
+					
+				}).catch((error) => {
+					// An error happened.
+				});
+			
+			}
+		// window.c = 	function savechanges() {
+		// 	 var todayDate = document.querySelector('rect.day.today').textContent;
+		// 	 console.log(todayDate);
+		// 	// let histref =	db.collection("user").doc(firebase.auth().currentUser.uid).collection('history').doc(todayDate);
+		// 	console.log(historyPath);
+			// histref.set(
+			// {histvec: historyPath
+			// }
+			// );
+			// db.collection("users").add({
+//     first: "Ada",
+//     last: "Lovelace",
+//     born: 1815
+// })
+// .then((docRef) => {
+//     console.log("Document written with ID: ", docRef.id);
+// })
+// .catch((error) => {
+//     console.error("Error adding document: ", error);
+// });
+
+
+	// 		let histref =	db.collection("user").doc(firebase.auth().currentUser.uid).collection('history');
+	// window.save = db.collection("user").doc(firebase.auth().currentUser.uid).collection('history').add({historyPath})
+	// 		.then((histref) => {
+	// 			console.log("Document written with ID: ", histref.id);
+	// 		})
+	// 		.catch((error) => {
+	// 			console.error("Error adding document: ", error);
+	// 		});
+
+	// 			}	
+          
+	
+	
+	  </script>
+
+  
+	<script>
+		   function hidestuff(){
+
+		$('#sideBar').slideToggle("slow");	
+		$('#wikipediaBox').slideToggle("slow");	
+
+		$("#quizbox").slideToggle("slow");	
+		$('#circularMenu1').slideToggle("slow");	
+		$('#categories').slideToggle("slow");	
+		document.getElementById('circularMenu').classList.toggle('active');
+        document.getElementById('circularMenu1').classList.toggle('active');
+        document.getElementById('quizbox').classList.toggle('active');
+
+	}
+
+
+	
+
+        // document.getElementById('circularMenu').classList.toggle('active');
+
+
+
+	</script>
+
+
+		<script type="x-shader/x-vertex" id="vertexshader">
+
+			attribute float size;
+			attribute vec3 customColor;
+			varying vec3 vColor;
+
+			void main() {
+
+				vColor = customColor;
+
+				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+
+				gl_PointSize = size * ( 300.0 / length( mvPosition.xyz ) );
+
+				gl_Position = projectionMatrix * mvPosition;
+
+			}
+
+		</script>
+
+		<script type="x-shader/x-fragment" id="fragmentshader">
+
+			uniform vec3 color;
+			uniform sampler2D texture;
+
+			varying vec3 vColor;
+
+			void main() {
+
+				gl_FragColor = vec4( color * vColor, 1.0 );
+
+				gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
+
+			}
+
+		</script>
+
+	
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.js'></script>
+  <script src='https://assets.codepen.io/127738/MeshSurfaceSampler_20210711.js'></script>
+  <script src='https://assets.codepen.io/127738/OBJLoader_20210711.js'></script>
+  <script src='https://assets.codepen.io/127738/OrbitControls.js'></script><script  src="./script.js"></script>
+  <script src="/dist/ObjectControls.js"></script>
+  <script src="/dist/quiz.js"></script>
+  <script type="text/javascript" src="/dist/firescript.js"></script>
+ <script type="text/javascript" src="/dist/calander.js"></script>
+  <!-- <script src='/dist/THREEx.KeyboardState.js'></script> -->
+
+</body>
+</html>
