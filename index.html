@@ -12,14 +12,16 @@
   <!-- <meta property="og:image" content="http://globe.cid.harvard.edu/images/preview.png"> -->
   <!-- <meta property="og:url" content="http://globe.cid.harvard.edu"> -->
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-  <link href="style.css" rel="stylesheet" type="text/css">
+  <link href="/style.css" rel="stylesheet" type="text/css">
 
-  <link href="/dist/select2.css" rel="stylesheet" type="text/css">
-
-
+  <!-- <link href="/dist/select2.css" rel="stylesheet" type="text/css"> -->
 
 
-  <link rel="icon" href="images/favicon.ico" />
+
+
+  <link rel="icon" href="/images/favicon.ico" />
+  <script type="text/javascript" src="/media/thananjayan/Academic/Eurekka/Brainiverse 2/gaaji/4-surface-sampling/dist/ui.js"></script>
+
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
  
@@ -30,7 +32,6 @@
   <!-- <script  type="module"  src="https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js"></script> -->
   <script  type="module"  src="https://www.gstatic.com/firebasejs/9.8.3/firebase-storage.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-  <script src="/dist/UI.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
@@ -40,8 +41,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.2/js/select2.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 
-  <script src="/dist/script.js"></script>
-  <script src="/dist/braincoor.js"></script>
+  <script src="/script.js"></script>
+  <script src="/braincoor.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
         integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
         crossorigin="anonymous" defer>
@@ -54,7 +55,7 @@
 <link href='http://fonts.googleapis.com/css?family=Rajdhani:300|500' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/solid.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css">
-<link href="select2.css" rel="stylesheet" type="text/css">
+<link href="/select2.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/solid.min.css">
 </head>
 
@@ -65,7 +66,8 @@
 
 		<div id="choice">
 			<div id='beginStory'>
-			<img src="images/icon/tour.png"/>
+			<img src="/images/icon/tour.png"/>
+			<input type="text" enabled id="my1" name="name" style="z-index: 1000 !important;" placeholder="Name" autofocus>
 			<div>Start the Intro</div>
 			<div id="loading">View an animated tour through the visualizations and concepts behind this project.</div>
 			</div>
@@ -75,7 +77,7 @@
 
 			<!-- <div><div class="midSeparator">&nbsp;</div></div> -->
 			<div id='beginExplore'>
-			<img src="images/icon/explore.png"/>
+			<img src="/images/icon/explore.png"/>
 			<div>Visualize Data</div>
 			<div id="loading">Skip the tour and start exploring our syllabus</div>
 			</div>
@@ -91,14 +93,14 @@
 			<div id="nextBox">
 
 					<div id="nextButton">
-						<img src="images/icon/next.png"/>
+						<img src="/images/icon/next.png"/>
 						<div class="small">Next</div>
 					</div>
 
 
 					
 					<div id="skipStoryLine">
-						<img src="images/icon/stop.png"/>
+						<img src="/images/icon/stop.png"/>
 						<div class="small">Quit</div>
 					</div>
 
@@ -124,13 +126,13 @@
 
 	<div id="sideBar">
 	
-		<!-- <div class="optionSeparator">&nbsp;</div> -->
+		<!-- <div class="">&nbsp;</div> -->
 		<div id="storyline">► Play Intro</div>
 		<!-- <div id="display" onclick="quizBioDisplay()">► Start Quiz</div> -->
 		<div id="buttons">
 
 		<div id="countrySection">
-			<div class="optionSeparator">&nbsp;</div>
+			<!-- <div class="">&nbsp;</div> -->
 			<div class="selectionBox">
 			<select class="countrySelection">
 			</select>
@@ -139,16 +141,16 @@
 
 
 		<div id="productSection" style="display:none">
-			<!-- <div class="optionSeparator">&nbsp;</div> -->
+			<!-- <div class="">&nbsp;</div> -->
 			<div class="productBox">
 			<select class="productSelection">
 			</select>
 			</div>
 		</div>
 
-		<!-- <div class="optionSeparator">&nbsp;</div> -->
+		<div class="optionSeparator">&nbsp;</div>
 		<div id="visualizations"></div>
-		<!-- <div class="optionSeparator">&nbsp;</div> -->
+		<div class="optionSeparator">&nbsp;</div>
 		<div id="showAbout">
 			<h2>Profile Info</h2>
 			</div>
@@ -159,17 +161,11 @@
 		<div class='sectionTitle'>Powered by:</div>
 		<a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Flk.linkedin.com%2Fcompany%2Feureka-innovations&psig=AOvVaw2Ds9LABgY6Gzd255hbqWj_&ust=1653420512607000&source=images&cd=vfe&ved=2ahUKEwiYt-jDrfb3AhUk_DgGHR2RDyQQr4kDegUIARCnAQ" target="_blank"><img id="theatlas" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfXTlNt9zgv6q_0SeoGAc96wMDCdN3XFHaQ1DsOtWOvReHYVdvhL80_tfGd5JB5u9ZEKs&usqp=CAU" style="width: 50px; opacity: .3"/></a>
 		<!-- <div id="atlasBox"></div> -->
-		
+		<br><br>
+
+
 	</div>
 	</div>
-
-	<div id="watch">
-		<img id="watchsvg" src="images/bluewatch.png"/>
-	</div>
-
-
-
-
 
 	</div>
 	<!-- </div> -->
@@ -185,6 +181,101 @@
 	</div>
 
 
+	<!-- <div id="chatbox" style="display:none"> -->
+	<div id="chatbox">
+		
+			<button class="btn"  id="chatclose"  style="float:right"><a>Close</a></button>	
+			<!-- <form id="form1" action="#" style="float:left">
+				<h4>Chat with Brainverse</h4>
+				<br>
+				<input type="text" id="fname" name="fname" placeholder="type your text here" /><br />
+				<br />
+				<input type="submit" value="Submit"/>
+			</form> -->
+
+			<div class="container-fluid h-100">
+				<div class="row justify-content-center h-100">
+					<div class="col-md-4 col-xl-3 chat">
+						<div class="card mb-sm-3 mb-md-0 contacts_card">
+							<div class="card-header">
+								<div class="input-group">
+									<input type="text" placeholder="Search..." name="" class="form-control search">
+									<div class="input-group-prepend">
+										<span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="card-body contacts_body">
+								<ui class="contacts">
+									<li class="active">
+										<div class="d-flex bd-highlight">
+											<div class="img_cont">
+												<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+													 class="rounded-circle user_img">
+												<span class="online_icon"></span>
+											</div>
+											<div class="user_info">
+												<span>Tech</span>
+												<p>Tech is online</p>
+											</div>
+										</div>
+									</li>
+								</ui>
+							</div>
+							<div class="card-footer"></div>
+						</div>
+					</div>
+					<div class="col-md-8 col-xl-6 chat">
+						<div class="card">
+							<div class="card-header msg_head">
+								<div class="d-flex bd-highlight">
+									<div class="img_cont">
+										<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+											 class="rounded-circle user_img">
+										<span class="online_icon"></span>
+									</div>
+									<div class="user_info">
+										<span>Chat with InfoTech</span>
+										<p>1767 Messages</p>
+									</div>
+									<div class="video_cam">
+										<span><i class="fas fa-video"></i></span>
+										<span><i class="fas fa-phone"></i></span>
+									</div>
+								</div>
+								<span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+								<div class="action_menu">
+									<ul>
+										<li><i class="fas fa-user-circle"></i> View profile</li>
+										<li><i class="fas fa-users"></i> Add to close friends</li>
+										<li><i class="fas fa-plus"></i> Add to group</li>
+										<li><i class="fas fa-ban"></i> Block</li>
+									</ul>
+								</div>
+							</div>
+							<div class="card-body msg_card_body" id="bodyContent">
+			
+			
+							</div>
+							<div class="card-footer">
+								<div class="input-group">
+									<div class="input-group-append">
+										<span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+									</div>
+									<textarea name="message" id="message" class="form-control type_msg"
+											  placeholder="Type your message..."></textarea>
+									<div class="input-group-append">
+										<button id="submit" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	</div>
 
 
 	<div id="aboutText" style="display:none">
@@ -192,66 +283,55 @@
 		<div class="aboutTitle" >
 
 			<div class="btncont">
-				
 					<button class="btn" id="LoggedOut"  style="float:left" ><a>hai</a></button>
 					<button class="btn" id="Loggedin"  style="float:left" onclick="gssoOut()"> <a> LogOut</a></button>
 					<button class="btn" id="googleSS"  style="float:left" onclick="sso()"><a>Google </a></button>
-					<button class="btn"  id="googleSS"  style="float:left"> <a> chat</a></button>	
+					<button class="btn"  id="chat"  style="float:left"> <a> chat</a></button>	
 		
-			</div>		
-		    	
+			</div>
 		</div>
 			
 
 		<div class="optionSeparator">&nbsp;</div>
 		
 
-	<div class="cont">
+		<div class="cont">
+				<div>
+					<div id="firebaseProfileinfo">
 
-
-			<div>
-						<div id="firebaseProfileinfo">
-						</div>
-					<br>
-					<br>
-						<img id="image" src="https://th.bing.com/th/id/R.fa0ca630a6a3de8e33e03a009e406acd?rik=UOMXfynJ2FEiVw&riu=http%3a%2f%2fwww.clker.com%2fcliparts%2ff%2fa%2f0%2fc%2f1434020125875430376profile.png&ehk=73x7A%2fh2HgYZLT1q7b6vWMXl86IjYeDhub59EZ8hF14%3d&risl=&pid=ImgRaw&r=0" style="float: left;"> 
-			</div>
-
-
-
-			<div style=" float:left;" > 
-				<input type="checkbox" id="switch" />
-				<label for="switch">dark</label>
-			</div>	
-
-
-	</div>
-
-
-					<br>
-
-
-
-					<div class="calcont">
-							<div id="d">
-								<button class="left">
-									<svg height="100%" width="100%" viewbox="0 0 10 10">
-										<path d="m 7 1 L 1 5 L 7 9 Z" fill="rgba(255,255,255,0.8)" />
-									</svg></button>
-								<button class="right">
-									<svg height="100%" width="100%" viewbox="0 0 10 10">
-										<path d="m 3 1 L 9 5 L 3 9 Z" fill="rgba(255,255,255,0.8)" />
-									</svg>
-								</button>
-							</div>
 					</div>
+						<br>
+						<br>
+					<img id="image" src="https://th.bing.com/th/id/R.fa0ca630a6a3de8e33e03a009e406acd?rik=UOMXfynJ2FEiVw&riu=http%3a%2f%2fwww.clker.com%2fcliparts%2ff%2fa%2f0%2fc%2f1434020125875430376profile.png&ehk=73x7A%2fh2HgYZLT1q7b6vWMXl86IjYeDhub59EZ8hF14%3d&risl=&pid=ImgRaw&r=0" style="float: left;"> 
+				</div>
+				<br>
+				<div style="float: right;"> 
+					<input type="checkbox" id="switch"/>
+					<label for="switch">dark</label>
+				</div>	
+		</div>
+		<br>
+
+
+		<div class="calcont">
+				<div id="d">
+					<button class="left">
+						<svg height="100%" width="100%" viewbox="0 0 10 10">
+							<path d="m 7 1 L 1 5 L 7 9 Z" fill="rgba(255,255,255,0.8)" />
+						</svg></button>
+					<button class="right">
+						<svg height="100%" width="100%" viewbox="0 0 10 10">
+							<path d="m 3 1 L 9 5 L 3 9 Z" fill="rgba(255,255,255,0.8)" />
+						</svg>
+					</button>
+				</div>
+		</div>
 
 	</div>
 
 
 		
 	
-
 
   <div id="controller"  style="display:none">
     <div id="circularMenu" class="circular-menu" onclick="hidestuff()">
@@ -543,11 +623,12 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
   <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.js'></script>
   <script src='https://assets.codepen.io/127738/MeshSurfaceSampler_20210711.js'></script>
   <script src='https://assets.codepen.io/127738/OBJLoader_20210711.js'></script>
-  <script src='https://assets.codepen.io/127738/OrbitControls.js'></script><script  src="./script.js"></script>
-  <script src="/dist/ObjectControls.js"></script>
-  <script src="/dist/quiz.js"></script>
-  <script type="text/javascript" src="/dist/firescript.js"></script>
- <script type="text/javascript" src="/dist/calander.js"></script>
+  <script src='https://assets.codepen.io/127738/OrbitControls.js'></script>
+  <script  src="./script.js"></script>
+  <script src="/ObjectControls.js"></script>
+  <script src="/quiz.js"></script>
+  <script type="text/javascript" src="/firescript.js"></script>
+ <script type="text/javascript" src="/calander.js"></script>
   <!-- <script src='/dist/THREEx.KeyboardState.js'></script> -->
 
 </body>
