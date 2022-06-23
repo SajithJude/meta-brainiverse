@@ -146,7 +146,7 @@ function init(){
   let sampler = null;
   let brain = null;
   new THREE.OBJLoader().load(
- "/brain-simple-mesh.obj",
+ "./brain-simple-mesh.obj",
   (obj) => {
     brain = obj.children[0];
     brain.material = new THREE.MeshBasicMaterial({
@@ -312,7 +312,7 @@ function init(){
   }  
 
 
-  var texture =  new THREE.TextureLoader().load("/images/dot8.png");
+  var texture =  new THREE.TextureLoader().load("./images/dot8.png");
   let neuronmaterial = new THREE.PointsMaterial({
     color: 5645027 ,
     depthWrite: false,
@@ -375,7 +375,7 @@ var sphereGeo = new THREE.SphereGeometry(.6, 32, 32);
 var sphereMeshMat = new THREE.MeshBasicMaterial({
     color: 0xffffff,
     transparent: true,
-    texture: new THREE.TextureLoader().load('/images/dot.png'),
+    texture: new THREE.TextureLoader().load('./images/dot.png'),
     blending: THREE.AdditiveBlending,
     opacity: .5
 });

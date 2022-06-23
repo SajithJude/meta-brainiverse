@@ -12,7 +12,7 @@
   <!-- <meta property="og:image" content="http://globe.cid.harvard.edu/images/preview.png"> -->
   <!-- <meta property="og:url" content="http://globe.cid.harvard.edu"> -->
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-  <link href="/style.css" rel="stylesheet" type="text/css">
+  <link href="./style.css" rel="stylesheet" type="text/css">
 
   <!-- <link href="/dist/select2.css" rel="stylesheet" type="text/css"> -->
 
@@ -20,7 +20,7 @@
 
 
   <link rel="icon" href="/images/favicon.ico" />
-  <script type="text/javascript" src="/media/thananjayan/Academic/Eurekka/Brainiverse 2/gaaji/4-surface-sampling/dist/ui.js"></script>
+  <script type="text/javascript" src="./UI.js"></script>
 
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
@@ -41,8 +41,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.2/js/select2.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 
-  <script src="/script.js"></script>
-  <script src="/braincoor.js"></script>
+  <script src="./script.js"></script>
+  <script src="./braincoor.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
         integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
         crossorigin="anonymous" defer>
@@ -55,7 +55,7 @@
 <link href='http://fonts.googleapis.com/css?family=Rajdhani:300|500' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/solid.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css">
-<link href="/select2.css" rel="stylesheet" type="text/css">
+<link href="./select2.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/solid.min.css">
 </head>
 
@@ -66,7 +66,7 @@
 
 		<div id="choice">
 			<div id='beginStory'>
-			<img src="/images/icon/tour.png"/>
+			<img src="./images/icon/tour.png"/>
 			<input type="text" enabled id="my1" name="name" style="z-index: 1000 !important;" placeholder="Name" autofocus>
 			<div>Start the Intro</div>
 			<div id="loading">View an animated tour through the visualizations and concepts behind this project.</div>
@@ -77,7 +77,7 @@
 
 			<!-- <div><div class="midSeparator">&nbsp;</div></div> -->
 			<div id='beginExplore'>
-			<img src="/images/icon/explore.png"/>
+			<img src="./images/icon/explore.png"/>
 			<div>Visualize Data</div>
 			<div id="loading">Skip the tour and start exploring our syllabus</div>
 			</div>
@@ -93,14 +93,14 @@
 			<div id="nextBox">
 
 					<div id="nextButton">
-						<img src="/images/icon/next.png"/>
+						<img src="./images/icon/next.png"/>
 						<div class="small">Next</div>
 					</div>
 
 
 					
 					<div id="skipStoryLine">
-						<img src="/images/icon/stop.png"/>
+						<img src="./images/icon/stop.png"/>
 						<div class="small">Quit</div>
 					</div>
 
@@ -181,8 +181,8 @@
 	</div>
 
 
-	<!-- <div id="chatbox" style="display:none"> -->
-	<div id="chatbox">
+	<div id="chatbox" style="display:none">
+	<!-- <div id="chatbox"> -->
 		
 			<button class="btn"  id="chatclose"  style="float:right"><a>Close</a></button>	
 			<!-- <form id="form1" action="#" style="float:left">
@@ -625,10 +625,10 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
   <script src='https://assets.codepen.io/127738/OBJLoader_20210711.js'></script>
   <script src='https://assets.codepen.io/127738/OrbitControls.js'></script>
   <script  src="./script.js"></script>
-  <script src="/ObjectControls.js"></script>
-  <script src="/quiz.js"></script>
-  <script type="text/javascript" src="/firescript.js"></script>
- <script type="text/javascript" src="/calander.js"></script>
+  <script src="./ObjectControls.js"></script>
+  <script src="./quiz.js"></script>
+  <script type="text/javascript" src="./firescript.js"></script>
+ <script type="text/javascript" src="./calander.js"></script>
   <!-- <script src='/dist/THREEx.KeyboardState.js'></script> -->
 
 </body>
