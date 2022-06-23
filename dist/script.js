@@ -1,21 +1,50 @@
 window.onload= function(){
 
-
   init();
 
   
   var UserInterface=null;
   var particles=1000;
 
-
+  myThis =this;
   var camera, controls, scene, renderer;
 
   var interactables = [];
   var particleSystem;
-  var rectangle = "/dist/images/dot2.png";
-  var imageData = "/dist/images/block.png";
+  var rectangle = "/images/dot2.png";
+  var imageData = "/images/block.png";
   var box = null;
+  myThis.showabout= false;
 
+  $("#showAbout").click(function(){
+    myThis.showabout=!myThis.showabout;
+    if(myThis.showabout){
+
+        
+        $("#aboutText").animate({'right':'0'},400, "swing", function() {
+          $("#aboutText").show();
+          $("#chatbox").hide();
+          myThis.showabout= myThis.showabout;
+          
+        });
+      }
+    else{
+        $("#aboutText").animate({'right':-window.innerWidth*0.4+'px'},200, "swing", function() {
+            $("#aboutText").hide();
+            $("#chatbox").hide();
+            myThis.showabout= myThis.showabout;
+            
+        });
+    }
+  });
+
+
+$("#closeAbout").click(function(){
+    myThis.showabout=false;
+    $("#aboutText").animate({'right':-window.innerWidth*0.4+'px'},200, "swing", function() {
+            $("#aboutText").hide();
+    });
+});
   
 
 
@@ -67,8 +96,6 @@ window.onload= function(){
   });
 
 
-
-
 function init(){
 
 
@@ -80,8 +107,10 @@ function init(){
   let camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 1, 1000);
   camera.position.set(71,17, 500);
 
-  var renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true} );
+  var renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
   renderer.setSize(innerWidth, innerHeight);
+   //background color changer
+  // renderer.setClearColorHex( 0xffffff, 1 );
   document.body.appendChild(renderer.domElement);
 
 
@@ -95,7 +124,11 @@ function init(){
 
 
   // // lighting for scene 
- 
+  var light = new THREE.PointLight(0xffffff);
+	light.position.set(0,0,50);
+  light.visible= true;
+  console.log(light);
+	scene.add(light);
 
 
   let controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -113,13 +146,14 @@ function init(){
   let sampler = null;
   let brain = null;
   new THREE.OBJLoader().load(
- "/dist/brain-simple-mesh.obj",
+ "/brain-simple-mesh.obj",
   (obj) => {
     brain = obj.children[0];
     brain.material = new THREE.MeshBasicMaterial({
       wireframe: true,
-      color: 0xff00b3, 
-      blending: THREE.AdditiveBlending,
+      color: 6281, 
+      blending: THREE.
+      AdditiveBlending,
       transparent: false,
       opacity: 0.1
     });
@@ -146,11 +180,6 @@ function init(){
 // 1455703 light clear blue
 
 
-var light = new THREE.PointLight(0xffffff);
-light.position.set(0,0,0);
-light.visible= true;
-console.log(light);
-scene.add(light);
 
 
 
@@ -160,14 +189,14 @@ scene.add(light);
   var switchStatus = false;
   $("#switch").on('change', function() {
       if ($(this).is(':checked')) {
-          switchStatus = $(this).is(':checked'); 
-          renderer.setClearAlpha(1.0);
-          p.add(light);
-
+          switchStatus = $(this).is(':checked');
+        //  scene.background = new THREE.Color( 0x808080 );
+        renderer.setClearAlpha(1.0);
+       
           brain.traverse((node) => {
             if (node.isMesh) {
-              node.material.opacity = 0.05;
-              node.material.color =new THREE.Color( 0x3399ff );
+              node.material.opacity = 0.1;
+              node.material.color =new THREE.Color( 0x301934 );
             }
             // scene.remove(light);
           });
@@ -177,18 +206,98 @@ scene.add(light);
       else {
       switchStatus = $(this).is(':checked');
       renderer.setClearAlpha(0.0);
+
+      // alert(switchStatus);// To verify
+      // scene.background= new THREE.Color( 0x000000 );
+      // renderer.setClearColor( 0x000000, 0);
+      console.log("sucess"); 
       brain.traverse((node) => {
         if (node.isMesh) {
-          node.material.opacity = 0.2;
-          p.add(light);
-
-          node.material.color =new THREE.Color( 0xff00b3 ); //pink
+          node.material.opacity = 0.1;
+          node.material.color =new THREE.Color( 6281 );
         }
       });
 
         
     }  });
 
+
+    myThis = this;
+    this.slideprofcad = false;
+    this.chatslide = false;
+    this.chatclose = false;
+
+    $("#d").click(function() {
+      if (!myThis.slideprofcad) {    
+          $(".cont").animate({'right':'0'},400, "swing", function() {
+            $(".cont").hide(); 
+          });
+
+          myThis.slideprofcad = true;
+
+      } else {
+          $(".cont").animate({'right':-window.innerWidth*0.4+'px'},200, "swing", function() {
+            $(".cont").show();
+          });
+          myThis.slideprofcad = false;
+          
+      }
+    });  
+
+
+    // $("#chat").click(function() {
+    //   myThis.chatslide = false;
+
+    //   if (!myThis.chatslide) { 
+    //       $("#chatbox").animate({'right':'0'},100, "swing", function() {
+          
+    //       $("#aboutText").hide(); 
+    //       $("#chatbox").show();
+    //       myThis.chatslide = true;
+
+    //       });
+
+
+    //   } else {
+    //       $("#aboutText").animate({'right':'0'},100, "swing", function() {
+    //         $("#chatbox").hide();  
+    //         $("#aboutText").show();
+    //         myThis.chatslide = false;
+
+    //       });
+    //   }
+    // }); 
+
+    // $("#chatclose").click(function() {
+    //   myThis.chatclose = false;
+
+    //   if (!myThis.chatclose) { 
+    //       $("#chatbox").animate({'right':'0'},100, "swing", function() {
+    //         $("#chatbox").hide();
+    //         $("#aboutText").show(); 
+    //       });
+          
+    //       myThis.chatclose = true;
+
+    //   } else {
+    //       $("#aboutText").animate({'right':'0'},200, "swing", function() {
+    //         $("#aboutText").hide();
+    //         $("#chatbox").show();
+    //       });
+    //       myThis.chatclose = false;
+    //   }
+    // }); 
+
+    $("#chat").click(function(){
+      $("#chatbox").show();
+      $("#fname").focus();
+      $("#aboutText").hide();
+    })
+    
+    $("#chatclose").click(function(){
+      $("#chatbox").hide();
+      $("#aboutText").show();
+    })
 
 
 
@@ -203,25 +312,23 @@ scene.add(light);
   }  
 
 
-  var texture =  new THREE.TextureLoader().load("/dist/images/dot8.png");
+  var texture =  new THREE.TextureLoader().load("/images/dot8.png");
   let neuronmaterial = new THREE.PointsMaterial({
-    color: 0x3399ff ,
+    color: 5645027 ,
     depthWrite: false,
-    emissive: 0xffffff,
+    emissive: new THREE.Color(5645027),
     blending: THREE.AdditiveBlending,
     size: .8,
     map: texture,
-    // vertexColors: true,
+    vertexColors: true,
   });
-  console.log(neuronmaterial)
 
 
-
-UserInterface= new UI();
+// UserInterface= new UI();
 
 var group = new THREE.Group();
 let p = new THREE.Points(g, neuronmaterial);
-p.add(light);
+
 
 // var calar = new THREE.Color(0x8083348)
 // console.log(calar);
@@ -268,7 +375,7 @@ var sphereGeo = new THREE.SphereGeometry(.6, 32, 32);
 var sphereMeshMat = new THREE.MeshBasicMaterial({
     color: 0xffffff,
     transparent: true,
-    // texture: new THREE.TextureLoader().load('/dist/images/dot.png'),
+    texture: new THREE.TextureLoader().load('/images/dot.png'),
     blending: THREE.AdditiveBlending,
     opacity: .5
 });
@@ -316,12 +423,13 @@ function onMouseDown( e) {
 
 
   var intersects = raycaster.intersectObject(p, true);
+  // console.log(intersects);
   if (intersects.length > 0) {
     var particle = intersects[0];
-    // g.attributes.color.setXYZ(particle.index,  particle.point.x, particle.point.y, particle.point.z);
-    // g.attributes.color.needsUpdate = true; 
-    // particle.object.parent.children[0].visible = true;
-    // neuronmaterial.vertexColors = true;
+    g.attributes.color.setXYZ(particle.index,  particle.point.x, particle.point.y, particle.point.z);
+    g.attributes.color.needsUpdate = true; 
+    particle.object.parent.children[0].visible = true;
+    neuronmaterial.vertexColors = true;
 
 
 
@@ -350,8 +458,8 @@ function onMouseDown( e) {
 
       //  var path = arrayOfpath.map((historyPathVec)});
        var histref =	db.collection("user").doc(firebase.auth().currentUser.uid).collection('history');
-    console.log(historyPathVec);  
-    // console.log(path);
+  //   console.log(historyPathVec);  
+  //   console.log(path);
   //   var setWithMerge = histref.set({
   //     histvec :historyPathVec
   // }, { merge: true });
@@ -363,12 +471,27 @@ function onMouseDown( e) {
           console.error("Error adding document: ", error);
         });
 
+        db.collection("user").doc(firebase.auth().currentUser.uid).collection('history').doc(todayDate).update({
+          histvec : {x: historyPathVec.x,
+          y: historyPathVec.y,
+        z:historyPathVec.z} })
+        .then(() => {
+          console.log("field written with ID: ");
+        })
+        .catch((error) => {
+          console.error("Error adding document: ", error);
+        });
+
+      
 
     rotgrp.add(previewSphere);
     rotgrp.add(p);
     rotgrp.add(lockedOn);
     rotgrp.add(brain);
     rotgrp.add(lines);
+
+
+
     scene.add( rotgrp ); 
 
 
@@ -561,13 +684,13 @@ function keyPressed(e){
     	break;
     case 'ArrowRight':
     	rotgrp.rotateY(-0.1);
-    	break;
+    	break;render
   }
-  e.preventDefault();
+  // e.preventDefault();
   // render();
   
   controls.update();
-  renderer.render(scene, camera);
+  // renderer.render(scene, camera);
 }
 
 
@@ -611,5 +734,5 @@ const animate = function(){
 }
 
 
-
 }
+
